@@ -10,7 +10,8 @@ import pickle
 import requests
 
 # load the nlp model and tfidf vectorizer from disk
-clf = pickle.load(open('nlp_model.pkl', 'rb'))
+filename = 'nlp_model.pkl'
+clf = pickle.load(open(filename, 'rb'))
 vectorizer = pickle.load(open('tranform.pkl','rb'))
 
 def create_similarity():
@@ -22,17 +23,17 @@ def create_similarity():
     similarity = cosine_similarity(count_matrix)
     return data,similarity
 
-def rcmd(title):
-    title = title.lower()
+def rcmd(m):
+    m = m.lower()
     try:
         data.head()
         similarity.shape
     except:
         data, similarity = create_similarity()
-    if title not in data['movie_title'].unique():
+    if m not in data['movie_title'].unique():
         return('Sorry! try another movie name')
     else:
-        i = data.loc[data['movie_title']==title].index[0]
+        i = data.loc[data['movie_title']==m].index[0]
         lst = list(enumerate(similarity[i]))
         lst = sorted(lst, key = lambda x:x[1] ,reverse=True)
         lst = lst[1:11] # excluding first item since it is the requested movie itself
@@ -154,3 +155,11 @@ def recommend():
 
 if __name__ == '__main__':
     app.run(debug=True)
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
