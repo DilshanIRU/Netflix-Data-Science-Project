@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'Netflix-Data-Science-Project'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_10E5F1F39A1042D5A9D483C252B366FE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_976D10E6892F4339A548B2CFF74AB35A }}
